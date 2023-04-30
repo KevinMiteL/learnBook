@@ -1,0 +1,40 @@
+week 16课堂作业
+
+Spring MVC 文件上传与下载
+
+ 
+
+学习要求：
+
+熟悉SpringMVC文件上传
+熟悉SpringMVC上传的接口类及使用
+阅读参考代码并调试
+ 
+
+作业要求：
+
+1.熟悉文件上传表单（位于WebRoot目录下的fileUpload.jsp文件）
+
+   <form action="${pageContext.request.contextPath }/fileUpload"
+
+   method="post" enctype="multipart/form-data" onsubmit="return check()">
+
+上传人：       <input id="name" type="text" name="name" /><br />
+
+请选择文件：<input id="file" type="file" name="uploadfile"  
+
+                                                  multiple="multiple" /><br />
+
+       <input type="submit" value="上传" />
+
+</form>
+
+ 
+
+2.熟悉上传控制器代码（位于cn.dsscm.controller包下的FileUploadController.java）
+
+3.运行fileUpload.jsp，设置上传人的名字为自己的姓名，上传一张图片
+
+4.观察upload目录下（位于工程目录下的.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Ch13_01\upload）是否上传成功，并截图
+
+ 

@@ -1,0 +1,77 @@
+附件为参考代码。阅读并调试代码，以下为代码说明:
+
+ 
+
+1.在src目录下，创建一个com.test.ioc包，并在包中创建接口UserDao，然后在接口中定义一个say()方法：
+
+package com.test.ioc;
+
+public interface UserDao {
+
+public void say();
+
+   }
+
+ 
+
+2.在com.test.ioc包下，创建UserDao接口的实现类UserDaoImpl，该类需要实现接口中的say()方法，并在方法中编写一条输出语句。
+
+package com.test.ioc;
+
+public class UserDaoImpl implements UserDao {
+
+public void say() {
+
+    System.out.println("userDao say hello World ! XXX-学号");
+
+ }
+
+}
+
+ 
+
+3.在src目录下，创建Spring的配置文件applicationContext.xml，并在配置文件中创建一个id为userDao的Bean。
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+       <beans xmlns="http://www.springframework.org/schema/beans"
+
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+                   xsi:schemaLocation="http://www.springframework.org/schema/beans  
+
+                   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">  
+
+            <bean id="userDao" class="com.test.ioc.UserDaoImpl" />
+
+      </beans>
+
+ 
+
+4.在com.test.ioc包下，创建测试类TestIoC，并在类中编写main()方法。在main()方法中，需要初始化Spring容器，并加载配置文件，然后通过Spring容器获取userDao实例（即Java对象），最后调用实例中的say()方法。
+
+package com.test.ioc;
+
+       import org.springframework.context.ApplicationContext;
+
+       import  org.springframework.context.support.ClassPathXmlApplicationContext;
+
+       public class TestIoC {
+
+              public static void main(String[] args) {  
+
+        ApplicationContext applicationContext =  
+
+              new ClassPathXmlApplicationContext("applicationContext.xml");  
+
+                     UserDao userDao = (UserDao) applicationContext.getBean("userDao");
+
+       userDao.say();
+
+             }
+
+      }
+
+ 
+
+请将XXX改为自己的姓名，将输出结果屏幕提交。

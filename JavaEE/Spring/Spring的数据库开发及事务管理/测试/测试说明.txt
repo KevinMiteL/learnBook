@@ -1,0 +1,61 @@
+资源目录：  
+
+applicationContext.xml
+
+<!-- 1配置数据源 -->
+
+<bean id="dataSource" class=
+
+    "org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+ <!--数据库驱动 -->
+
+ <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+
+ <!--连接数据库的url -->
+
+ <property name="url" value="jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC" />
+
+ <!--连接数据库的用户名 -->
+
+ <property name="username" value="root" />
+
+ <!--连接数据库的密码 -->
+
+ <property name="password" value="root" />
+
+</bean>
+
+<!-- 2配置JDBC模板 -->
+
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+
+ <!-- 默认必须使用数据源 -->
+
+ <property name="dataSource" ref="dataSource" />
+
+</bean>
+
+<!--定义id为accountDao的Bean-->
+
+<bean id="accountDao" class="cn.test.dao.UserAccountDaoImpl">
+
+ <!-- 将jdbcTemplate注入到accountDao实例中 -->
+
+ <property name="jdbcTemplate" ref="jdbcTemplate" />
+
+</bean>
+
+     
+
+     
+
+作业要求：
+
+1.阅读代码，弄清数据操作方法（UserAccountDaoImpl里有数据库操作代码）
+
+2.运行测试类JdbcTemplateTest的mainTest方法，创建表
+
+3.运行测试类JdbcTemplateTest的addAccountTest方法，在账号表中增加一条记录（username用自己的姓名）
+
+ 

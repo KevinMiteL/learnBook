@@ -1,0 +1,77 @@
+Spring数据交互与绑定示例
+
+学习要求：
+
+   熟悉数据交互与绑定的几种方法
+
+   参考示例代码理解绑定
+
+ 
+
+练习内容：
+
+   1.阅读src下cn.dsscm.controller包下的OrdersController的实现
+
+   
+
+/**
+
+ * 向订单查询页面跳转
+
+ */
+
+@RequestMapping("/tofindOrdersWithUser")
+
+public String tofindOrdersWithUser( ) {
+
+    return "orders";
+
+}
+
+   
+
+  /**
+
+ * 查询订单和用户信息【注意传入的参数类型！】
+
+ */
+
+@RequestMapping("/findOrdersWithUser")
+
+public String findOrdersWithUser(Orders orders) {
+
+    Integer orderId = orders.getOrdersId();
+
+    User user = orders.getUser();
+
+    String username = user.getUsername();
+
+    System.out.println("orderId="+orderId);
+
+    System.out.println("username="+username);
+
+    return "success";
+
+}
+
+   
+
+   2.通过地址访问订单查询页面
+
+       http://localhost:8080/Ch12_01/findOrdersWithUser
+
+       
+
+       订单编号填写：1
+
+       所属用户填写：自己的姓名
+
+       
+
+       然后点击查询后，观察控制台输出，包含以下信息：
+
+           orderId=1
+
+           username=XXX
+
+           

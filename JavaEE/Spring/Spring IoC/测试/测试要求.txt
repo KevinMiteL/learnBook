@@ -1,0 +1,71 @@
+在ex12a-Spring第一个程序Baseline基础上做以下实验：
+
+ 
+
+1.Setter注入
+
+ 创建一个用户的JavaBean,参考代码：
+
+public class User{
+
+ private String name; //用户姓名
+
+ private Integer age; //年龄
+
+ private String sex;  //性别
+
+ 
+
+ ...  // 省略的Setter和Getter方法
+
+}
+
+ 
+
+在Spring配置文件applicationContext.xml里配置该JavaBean,关键代码如下：
+
+<!-- User Bean -->
+
+<bean name="user" class="com.test.beans.User">
+
+   <property name="name">
+
+     <value>张三</value>
+
+   </property>
+
+   <property name="age">
+
+     <value>20</value>
+
+       </property>
+
+    <property name="sex">
+
+      <value>男</value>
+
+      </property>
+
+</bean>
+
+ 
+
+在测试函数里加载Bean,关键代码如下：
+
+public static void main(String[] args) {  
+
+       ApplicationContext applicationContext =  
+
+         new ClassPathXmlApplicationContext("applicationContext.xml");  
+
+         User user = (User) applicationContext.getBean("user"); //获取Bean
+
+       System.out.println("用户姓名---"+user.getName());
+
+      System.out.println("用户年龄---"+user.getAge());
+
+      System.out.println("用户性别---"+user.getSex());
+
+        }
+
+ 
